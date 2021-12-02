@@ -22,7 +22,7 @@ management:
   server:
     port: 9090
 
-# Loggng
+# Logging
 logging:
   file:
     path: C:\PURAB\GITHUB-PROJECTS\SPRING-BOOT-PROJECTS\spring-boot-redis-user-mangement-example-ep\logs
@@ -30,5 +30,13 @@ logging:
   logback:
     rollingpolicy:
       max-file-size: 10KB
+  level:
+    root: info
+    ep-dao: debug
+    ep-controller: info
+    ep: info
+  group:
+    spring: "org.springdoc, org.springframework"
+    ep: "in.purabtech.ep"
 
-debug: true
+#debug: true
