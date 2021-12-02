@@ -2,6 +2,8 @@ package in.purabtech.ep.controller;
 
 import in.purabtech.ep.dao.UserDao;
 import in.purabtech.ep.dto.UserDto;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,8 +26,9 @@ public class UserController {
     }
 
     @PostMapping(value = "/users")
-    public void addUsers(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> addUsers(@RequestBody UserDto userDto) {
         //System.out.println(userDto);
-        userDao.addUser(userDto);
+        UserDto created = userDao.addUser(userDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 }

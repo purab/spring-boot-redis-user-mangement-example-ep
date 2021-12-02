@@ -23,10 +23,11 @@ public class UserDao {
         return userList;
     }
 
-    public void addUser(UserDto user) {
+    public UserDto addUser(UserDto user) {
         user.setUserId(generateUniqueId());
         System.out.println(user);
         userList.add(user);
+        return user;
     }
 
     //generate random unique number
