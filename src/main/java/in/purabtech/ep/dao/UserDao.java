@@ -1,6 +1,9 @@
 package in.purabtech.ep.dao;
 
 import in.purabtech.ep.dto.UserDto;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
@@ -9,7 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 @Repository
+@Slf4j
 public class UserDao {
 
     private final List<UserDto> userList = new ArrayList<>();
@@ -19,10 +25,15 @@ public class UserDao {
         userList.add(UserDto.builder().userId(2L).name("purab2").phone(12345678).address("second user").build());
     }
 
+    @Cacheable("users")
     public List<UserDto> getUsers() {
-        return userList;
+        log.info("Calling service to get Users data...");
+        log.debug("This s debug Calling service to get Users data...");
+        return new ArrayList<>(userList);
     }
 
+
+    @CacheEvict(value = "users",allEntries = true)
     public UserDto addUser(UserDto user) {
         user.setUserId(generateUniqueId());
         System.out.println(user);

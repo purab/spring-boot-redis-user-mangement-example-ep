@@ -40,3 +40,13 @@ logging:
     ep: "in.purabtech.ep"
 
 #debug: true
+
+#Cache config
+spring:
+  cache:
+    redis:
+      time-to-live: 1025
+    type: simple
+
+  redis:
+    port: 6379
