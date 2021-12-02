@@ -1,0 +1,34 @@
+
+server:
+  port: 8080
+
+#documentation
+springdoc:
+  use-management-port: true
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+# profile and actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  server:
+    port: 9090
+
+# Loggng
+logging:
+  file:
+    path: C:\PURAB\GITHUB-PROJECTS\SPRING-BOOT-PROJECTS\spring-boot-redis-user-mangement-example-ep\logs
+    name: logs\user.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10KB
+
+debug: true
