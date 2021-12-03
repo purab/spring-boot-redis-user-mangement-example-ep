@@ -30,5 +30,5 @@ e.g. Different Port
 ### For redis server use following commands (Ref:https://www.baeldung.com/spring-data-redis-properties)
 ```
 docker pull redis
-docker run --name saggu.uk -p 6379:6379 -d redis
+docker run --name redis-local -p 6379:6379 -d redis
 ```
